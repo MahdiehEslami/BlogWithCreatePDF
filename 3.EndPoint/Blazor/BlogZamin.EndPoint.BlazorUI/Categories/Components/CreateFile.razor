@@ -1,0 +1,53 @@
+﻿@page "/createpdf"
+@inject IJSRuntime JS
+
+<h3>CreateFile</h3>
+
+@code {
+    @code {
+        //[Inject] ICategoryServices CategoryService { get; set; }
+        [Inject] NavigationManager NavigationManager { get; set; }
+
+        protected override async Task OnInitializedAsync()
+        {
+            DownloadFileFromUrl();
+        }
+        private async Task DownloadFileFromUrl()
+        {
+            var fileName = "sample";
+            var fileURL = "https://localhost:44339/api/CategoryQuery/GeneratePdf?InvoiceNo=" + fileName;
+            NavigationManager.NavigateTo(fileURL);
+        }
+
+        #region Another way to DownloadFile
+        //private Stream GetFileStream()
+        //{
+        //    var randomBinaryData = new byte[50 * 1024];
+        //    var fileStream = new MemoryStream(randomBinaryData);
+        //    Console.WriteLine("filestream");
+        //    var result = CategoryService.GeneratePdf("Sample");
+        //    Console.WriteLine("result:");
+        //    //fileStream = result.Result;
+        //    return fileStream;
+        //}
+
+        //private async Task DownloadFileFromStream()
+        //{
+        //    var fileStream = GetFileStream();
+        //    var fileName = "Sample.pdf";
+        //    using var streamRef = new DotNetStreamReference(stream: fileStream);
+        //    Console.WriteLine("streamRef");
+        //    await JS.InvokeVoidAsync("downloadFileFromStream", fileName, streamRef);
+        //}
+
+        //private async Task DownloadFileFromUrl()
+        //{
+        //    //var fileStream = GetFileStream();
+        //    var fileName = "mahsa.pdf";
+        //    var fileURL = "https://localhost:44339/api/CategoryQuery/GeneratePdf?InvoiceNo=mahsa";
+        //    await JS.InvokeVoidAsync("triggerFileDownload",fileURL);
+        //}
+        #endregion
+        
+    }
+}

@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.49.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.51.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\1.Core\BlogZamin.Core.ApplicationService\BlogZamin.Core.ApplicationService.csproj" />
+    <ProjectReference Include="..\..\1.Core\BlogZamin.Core.Contract\BlogZamin.Core.Contract.csproj" />
+    <ProjectReference Include="..\..\1.Core\BlogZamin.Core.Domain\BlogZamin.Core.Domain.csproj" />
+    <ProjectReference Include="..\..\2.Infrastructure\Data\BlogZamin.Infrastructure.SQL.Commands\BlogZamin.Infrastructure.SQL.Commands.csproj" />
+    <ProjectReference Include="..\..\2.Infrastructure\Data\BlogZamin.Infrastructure.SQL.Queries\BlogZamin.Infrastructure.SQL.Queries.csproj" />
+    <ProjectReference Include="..\..\3.EndPoint\BlogZamin.EndPoint.API\BlogZamin.EndPoint.API.csproj" />
+  </ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="Protos\v1\Categories\CategoryCommand.proto" GrpcServices="Server" />
+		<Protobuf Include="Protos\v1\Categories\CategoryQuery.proto" GrpcServices="Server" />
+
+	</ItemGroup>
+  <!--<ItemGroup>
+    <Folder Include="Protos\V1\Blogs\" />
+    <Folder Include="Protos\V1\Photos\" />
+    <Folder Include="Services\V1\Blogs\" />
+    <Folder Include="Services\V1\Photos\" />
+  </ItemGroup>-->
+
+</Project>

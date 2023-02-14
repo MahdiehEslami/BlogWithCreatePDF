@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Zamin.Extensions.Events.Outbox.Dal.EF" Version="7.0.0-beta.1" />
+    <PackageReference Include="Zamin.Infra.Data.Sql.Commands" Version="7.0.0-beta.1" />
+    <PackageReference Include="Zamin.Utilities.SerilogRegistration" Version="7.0.0-beta.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\1.Core\BlogZamin.Core.ApplicationService\BlogZamin.Core.ApplicationService.csproj" />
+    <ProjectReference Include="..\..\..\1.Core\BlogZamin.Core.Contract\BlogZamin.Core.Contract.csproj" />
+    <ProjectReference Include="..\..\..\1.Core\BlogZamin.Core.Domain\BlogZamin.Core.Domain.csproj" />
+    <ProjectReference Include="..\BlogZamin.Infrastructure.SQL.Queries\BlogZamin.Infrastructure.SQL.Queries.csproj" />
+  </ItemGroup>
+
+</Project>

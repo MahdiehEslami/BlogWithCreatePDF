@@ -1,0 +1,39 @@
+﻿@page "/blog/update/{Id}"
+<h3>update Blog</h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label for="Title" class="control-label">@nameof(UpdateBlogVM.Title)</label>
+            <input for="Title" class="form-control" @bind="@model.Title" />
+
+            <label for="Description" class="control-label">@nameof(UpdateBlogVM.Description)</label>
+            <input for="Description" class="form-control" @bind="@model.Description" />
+        </div>
+
+        <div class="form-group mt-2">
+            <label for="Name" class="control-label">Category</label>
+            <select class="form-select" aria-label="Select category" @bind="@SelectedCategories" multiple>
+                @foreach (var category in categories)
+                {
+                        <option value="@category.CategoryId">@category.Title</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group mt-2">
+            <label for="Name" class="control-label">Photo</label>
+            <select class="form-select" aria-label="Select photo" @bind="@SelectedPhotos" multiple>
+                @foreach (var photo in photos)
+                {
+                            <option value="@photo.PhotoId">@photo.Title</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group mt-2">
+            <input type="button" value="Update" @onclick="@UpdateBlg" class="btn btn-primary" />
+            <input type="button" value="Cancel" @onclick="@Cancel" class="btn btn-light" />
+        </div>
+    </div>
+</div>

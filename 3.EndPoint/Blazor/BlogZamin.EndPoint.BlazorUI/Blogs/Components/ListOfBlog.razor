@@ -1,0 +1,55 @@
+﻿@page "/blog"
+@inject Microsoft.AspNetCore.Components.NavigationManager navigation
+
+
+<PageTitle>Blog list</PageTitle>
+
+<h1>Blog list</h1>
+
+<ErrorMessage Message="@ErrorMessage"></ErrorMessage>
+
+<p>This component demonstrates the list of Blogs</p>
+<button class="btn btn-primary mb-2" @onclick="@(() => navigation.NavigateTo("/blog/create"))">Create</button>
+
+@if (pagedData == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@nameof(BlogVM.Title)</th>
+                <th>@nameof(BlogVM.BusinessId)</th>
+                <th>@nameof(BlogVM.Description)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var blog in pagedData.QueryResult)
+            {
+                <tr>
+                    <td>@blog.Title</td>
+                    <td>@blog.BusinessId</td>
+                    <td>@blog.Description</td>
+                    <td>
+                        <button class="btn btn-warning" @onclick="@(() => navigation.NavigateTo($"/blog/update/{blog.Id}"))">Update</button>
+                        <button class="btn btn-danger" @onclick="@DeleteBlg">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col">
+            <Pagination Spread="2"
+                    CurrentPage="@pagedData.PageNumber"
+                    PageSize="@pagedData.PageSize"
+                    TotalCount="@pagedData.TotalCount"
+                    SelectedPage="SelectedPage" />
+        </div>
+    </div>
+}
+

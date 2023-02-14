@@ -1,0 +1,24 @@
+syntax = "proto3";
+package BlogZamin.Service.Grpc.Protos.V1.Categories;
+option csharp_namespace = "BlogZamin.Service.Grpc.Protos.V1.Categories";
+import "google/protobuf/empty.proto";
+
+service CategoryQueryService{
+	rpc GetAll(google.protobuf.Empty) returns (stream CategoryReply);
+	rpc GetById(CategoryByIdRequest) returns (CategoryReply);
+
+}
+
+
+message CategoryByIdRequest{
+		int64 CategoryId=1;
+}
+
+message CategoryReply{
+	int64 CategoryId=1;
+	string BusinessId=2;
+	string Title = 3;
+	bool IsActive = 4;
+}
+
+

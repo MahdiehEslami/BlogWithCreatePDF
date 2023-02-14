@@ -1,0 +1,56 @@
+﻿@page "/photo"
+@inject Microsoft.AspNetCore.Components.NavigationManager navigation
+
+
+<PageTitle>Photo list</PageTitle>
+
+<ErrorMessage Message="@ErrorMessage"></ErrorMessage>
+
+<p>photo list</p>
+<button class="btn btn-primary mb-2" @onclick="@(() => navigation.NavigateTo("/photo/create"))">Create</button>
+
+@if (pagedData == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                
+                <th>@nameof(PhotoVM.Title)</th>
+                <th>@nameof(PhotoVM.ImageUrl)</th>
+                <th>@nameof(PhotoVM.BusinessId)</th>
+                <th>@nameof(PhotoVM.IsActive)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var photo in pagedData.QueryResult)
+            {
+                <tr>
+                    <td>@photo.Title</td>
+                    <td>@photo.ImageUrl</td>
+                    <td>@photo.BusinessId</td>
+                    <td>@photo.IsActive</td>
+                    <td>
+                        <button class="btn btn-warning" @onclick="@(() => navigation.NavigateTo($"/photo/update/{photo.PhotoId}"))">Update</button>
+                        <button class="btn btn-danger" @onclick="@Deleteimg">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col">
+            <Pagination Spread="2"
+                    CurrentPage="@pagedData.PageNumber"
+                    PageSize="@pagedData.PageSize"
+                    TotalCount="@pagedData.TotalCount"
+                    SelectedPage="SelectedPage" />
+        </div>
+    </div>
+}
+

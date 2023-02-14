@@ -1,0 +1,40 @@
+syntax = "proto3";
+package BlogZamin.Service.Grpc.Protos.V1.Categories;
+option csharp_namespace = "BlogZamin.Service.Grpc.Protos.V1.Categories";
+import "google/protobuf/empty.proto";
+
+service CategoryCommandService{
+	rpc CreateCategory(stream CategoryCreateRequest) returns (stream CategoryCreateReply);
+	rpc DeleteCategory(CatByIdRequest) returns (CategoryDeleteReply);
+	rpc UpdateCategory(CategoryUpdateRequest) returns (CategoryUpdateReply);
+
+}
+
+
+message CategoryCreateRequest{
+	string Title = 1;
+	bool IsActive = 2;
+}
+message CategoryCreateReply{
+		int64 CategoryId=1;
+}
+
+
+message CatByIdRequest{
+		int64 CategoryId=1;
+}
+message CategoryDeleteReply
+{
+	bool Success=1;
+}
+
+
+message CategoryUpdateRequest{
+	int64 CategoryId=1;
+	string Title = 2;
+	bool IsActive = 3;
+}
+message CategoryUpdateReply
+{
+	int64 CategoryId=1;
+}

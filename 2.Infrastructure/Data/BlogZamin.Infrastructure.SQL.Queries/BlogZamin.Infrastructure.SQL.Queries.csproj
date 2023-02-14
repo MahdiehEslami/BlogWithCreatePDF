@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Zamin.Infra.Data.Sql.Queries" Version="7.0.0-beta.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\1.Core\BlogZamin.Core.ApplicationService\BlogZamin.Core.ApplicationService.csproj" />
+    <ProjectReference Include="..\..\..\1.Core\BlogZamin.Core.Contract\BlogZamin.Core.Contract.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Blogs\" />
+  </ItemGroup>
+
+</Project>

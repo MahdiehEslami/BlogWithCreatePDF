@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Zamin.Core.ApplicationServices" Version="7.0.0-beta.1" />
+    <PackageReference Include="Zamin.Core.Domain.Toolkits" Version="7.0.0-beta.1" />
+    <PackageReference Include="Zamin.Utilities" Version="7.0.0-beta.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlogZamin.Core.Contract\BlogZamin.Core.Contract.csproj" />
+    <ProjectReference Include="..\BlogZamin.Core.Domain\BlogZamin.Core.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
